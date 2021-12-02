@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css";
 
 const userlist = [
     {
-        id: "shirleyw",
+        id: "shirley wong",
         name: "AMSL - Shirley Wong",
         group: 2,
     },
@@ -30,7 +30,7 @@ const userlist = [
         group: 1,
     },
     {
-        id: "erics",
+        id: "eric shiu",
         name: "EC - Eric",
         group: 1,
     },
@@ -81,7 +81,7 @@ const userlist = [
         group: 2,
     },
     {
-        id: "erik",
+        id: "erik she",
         name: "StreetSmart - Erik",
         group: 2,
     },
@@ -106,7 +106,7 @@ const userlist = [
         group: 2,
     },
     {
-        id: "shirleyi",
+        id: "shirley ip",
         name: "StreetSmart - Shirley Ip",
         group: 2,
     },
