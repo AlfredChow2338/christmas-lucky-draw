@@ -14,3 +14,15 @@ a {
 * {
     box-sizing: border-box;
 }
+
+.drawAni {
+    width: 50%;
+    min-width: 240px;
+}
+
+.drawAniBig {
+    width: 90%;
+    height: 90%;
+    min-width: 300px;
+    min-height: 240px;
+}
