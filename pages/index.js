@@ -302,7 +302,7 @@ export default function Home() {
         setcurrentprogress(3);
         setTimeout(() => {
             setcurrentprogress(2);
-        }, 5000);
+        }, 3000);
     };
     if (currentprogress === 0) {
         return (
@@ -504,9 +504,9 @@ export default function Home() {
                     <div className="App">
                         <Row justify="center" style={{ marginBottom: 10 }}>
                             <img
+                                className="drawAni"
                                 src="/present.png"
                                 alt="AMSL Corp"
-                                style={{ width: "60%", minWidth: 160 }}
                             />
                         </Row>
                         <Title
