@@ -332,7 +332,7 @@ export default function Home() {
         setcurrentprogress(3);
         setTimeout(() => {
             setcurrentprogress(2);
-        }, 300);
+        }, 2000);
     };
     if (currentprogress === 0) {
         return (
