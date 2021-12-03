@@ -175,7 +175,7 @@ const presentList = [
     },
     {
         id: 12,
-        name: "(白色) NM4 3合1智能頸椎按摩儀 遙控 語音 發熱 EMS NECK MASSAGER 低頭族必備 頸部按摩 xp-pk718-wh/nm4 (香港原裝行貨 半年保養)",
+        name: "全貼合人體工學保健坐墊 保護脊椎 承托墊 美臀塑腿 痔瘡椅墊 腰痛救星",
         pgroup: 1,
     },
     {
