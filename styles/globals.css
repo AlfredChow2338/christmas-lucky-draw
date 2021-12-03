@@ -17,6 +17,7 @@ a {
 
 .drawAni {
     width: 50%;
+    height: 50%;
     min-width: 240px;
     max-width: 600px;
 }
