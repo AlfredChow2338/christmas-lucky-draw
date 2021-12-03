@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Button, Typography, Row, Steps, Select } from "antd";
+import { Button, Typography, Row, Steps, Select, Table } from "antd";
 import { useEffect, useState } from "react";
 
 const { Title } = Typography;
@@ -225,6 +225,19 @@ const presentList = [
     },
 ];
 
+const columns = [
+    {
+        title: "Name",
+        dataIndex: "name",
+        key: "name",
+    },
+    {
+        title: "Present",
+        dataIndex: "present",
+        key: "present",
+    },
+];
+
 export default function Home() {
     const [currentprogress, setcurrentprogress] = useState(0);
     const [userid, setuserid] = useState("");
@@ -233,6 +246,8 @@ export default function Home() {
     // const [selecteddata, setselecteddata] = useState([]);
     const [notselecteddata, setnotselecteddata] = useState([]);
     const [presentdata, setpresentdata] = useState([]);
+    const [numofpresent, setnumofpresnet] = useState(21);
+    const [presentmap, setpresentmap] = useState([]);
     useEffect(() => {
         if (!localStorage.getItem("not_selected")) {
             localStorage.setItem("not_selected", JSON.stringify(userlist));
@@ -242,6 +257,15 @@ export default function Home() {
         }
         setnotselecteddata(JSON.parse(localStorage.getItem("not_selected")));
     }, []);
+    useEffect(() => {
+        console.log(numofpresent);
+        if (numofpresent === 0) {
+            setTimeout(() => {
+                setcurrentprogress(4);
+                setpresentmap(JSON.parse(localStorage.getItem("presentmap")));
+            }, 10000);
+        }
+    }, [numofpresent]);
     const getRandomInt = (max) => {
         return Math.floor(Math.random() * max) + 1;
     };
@@ -266,6 +290,7 @@ export default function Home() {
         const fnotselectedStorage = notselecteddatatemp.filter(
             (item) => item.id !== userid
         );
+        setnumofpresnet(fnotselectedStorage.length);
         setnotselecteddata(fnotselectedStorage);
         localStorage.setItem(
             "not_selected",
@@ -299,10 +324,15 @@ export default function Home() {
         );
         setpresentname(present.name);
         localStorage.setItem("present", JSON.stringify(newpresentdata));
+
+        let presentmap = JSON.parse(localStorage.getItem("presentmap")) || [];
+        presentmap.push({ name: userid.toUpperCase(), present: present.name });
+        localStorage.setItem("presentmap", JSON.stringify(presentmap));
+
         setcurrentprogress(3);
         setTimeout(() => {
             setcurrentprogress(2);
-        }, 3000);
+        }, 300);
     };
     if (currentprogress === 0) {
         return (
@@ -564,7 +594,7 @@ export default function Home() {
                 </main>
             </div>
         );
-    } else {
+    } else if (currentprogress === 3) {
         return (
             <div className={styles.container}>
                 <Head>
@@ -580,6 +610,22 @@ export default function Home() {
                             alt="AMSL Corp"
                             className="drawAniBig"
                         />
+                    </div>
+                </main>
+            </div>
+        );
+    } else {
+        return (
+            <div className={styles.container}>
+                <Head>
+                    <title>Christmas Lucky Draw</title>
+                    <meta name="description" content="Christmas Lucky Draw" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+
+                <main className={styles.main} style={{ background: "#ffffff" }}>
+                    <div className="App">
+                        <Table dataSource={presentmap} columns={columns} />
                     </div>
                 </main>
             </div>
